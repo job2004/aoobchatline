@@ -13,7 +13,6 @@ def index():
 
 @app.route('/bot', methods=['POST'])
 def bot():
-    # ข้อความที่ต้องการส่งกลับ
     replyStack = list()
    
     msg_in_json = request.get_json()
@@ -39,6 +38,7 @@ def reply(replyToken, textList):
             "text":text
         })
     data = json.dumps({
+        "replyToken":replyToken,
         "messages":msgs
     })
     requests.post(LINE_API, headers=headers, data=data)
