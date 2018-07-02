@@ -21,8 +21,10 @@ def bot():
     replyToken = msg_in_json["events"][0]['replyToken']
 
     replyStack.append(msg_in_string)
-    reply(replyToken, replyStack[:5])
+    reply(replyToken, "hello")
     
+    print(msg_in_json["events"][0]["message"]["text"])
+
     return 'OK',200
  
 def reply(replyToken, textList):
@@ -37,15 +39,13 @@ def reply(replyToken, textList):
             "type":"text",
             "text":text
         })
-        
-    data1 = "สวัสดีดวงตะวัน"
+    
     data = json.dumps({
         "replyToken":replyToken,
         "messages":msgs
     })
-
     
-    requests.post(LINE_API, headers=headers, data=data1)
+    requests.post(LINE_API, headers=headers, data=data)
     return
 
 if __name__ == '__main__':
