@@ -21,9 +21,9 @@ def bot():
     replyToken = msg_in_json["events"][0]['replyToken']
 
     replyStack.append(msg_in_string)
-    reply(replyToken, "hello")
+    reply(replyToken, msg_in_json["events"][0]["message"]["text"])
     
-    print(msg_in_json["events"][0]["message"]["text"])
+    # print(msg_in_json["events"][0]["message"]["text"])
 
     return 'OK',200
  
