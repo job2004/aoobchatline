@@ -37,11 +37,15 @@ def reply(replyToken, textList):
             "type":"text",
             "text":text
         })
+        
+    data1 = "สวัสดีดวงตะวัน"
     data = json.dumps({
         "replyToken":replyToken,
         "messages":msgs
     })
-    requests.post(LINE_API, headers=headers, data=data)
+
+    
+    requests.post(LINE_API, headers=headers, data=data1)
     return
 
 if __name__ == '__main__':
