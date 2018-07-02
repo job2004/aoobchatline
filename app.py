@@ -33,8 +33,12 @@ def reply(replyToken, textList):
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': LINE_API_KEY
     }
-    msgs = textList
-
+    msgs = []
+    msgs.append({
+            "type":"text",
+            "text":textList
+        })
+        
     print(msgs)
     data = json.dumps({
         "replyToken":replyToken,
