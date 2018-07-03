@@ -21,12 +21,20 @@ def bot():
     replyToken = msg_in_json["events"][0]['replyToken']
 
     replyStack.append(msg_in_string)
-    reply(replyToken, msg_in_json["events"][0]["message"]["text"])
-    
-    # print(msg_in_json["events"][0]["message"]["text"])
-
+    # reply(replyToken, msg_in_json["events"][0]["message"]["text"])
+    rule = rule_base(msg_in_json["events"][0]["message"]["text"])
+    reply(replyToken, rule)
     return 'OK',200
- 
+
+def rule_base(message_text):
+    if("ราคา" in message_text):
+        price = "ในส่วนของราคาถ้าเป็นกางเกงสแล็ค 300 บาทค่ะ"
+        return price
+    else:
+        return "ไม่เข้าใจเกี่ยวกับคำถาม เราจะปรับปรุงเกี่ยวกับการตอบคำถามให้ดีขึ้นในภายหลังนะค่ะ กราบขออภัย(ok)"
+    return
+    
+        
 def reply(replyToken, textList):
     LINE_API = 'https://api.line.me/v2/bot/message/reply'
     headers = {
@@ -38,8 +46,7 @@ def reply(replyToken, textList):
             "type":"text",
             "text":textList
         })
-        
-    print(msgs)
+
     data = json.dumps({
         "replyToken":replyToken,
         "messages":msgs
