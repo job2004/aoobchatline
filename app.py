@@ -3,7 +3,7 @@ import json
 import requests
 
 global LINE_API_KEY
-LINE_API_KEY = 'Bearer sl640wlzs4BMjI0OIl+orPXVN3lDfwXc9yvo9tvjiEow4ODs3+hVtQEEHclfonw/FTo+kmGc+SNKyjU0jDnTr3FLu2WzC6PUI/PiOHs9RhGfLIFt9/60UVVpxmJq37VuUdlV4ew4CXW5aboLzFTMDwdB04t89/1O/w1cDnyilFU='
+LINE_API_KEY = 'Bearer access token'
 
 app = Flask(__name__)
  
@@ -28,8 +28,7 @@ def bot():
 
 def rule_base(message_text):
     if("ราคา" in message_text):
-        price = "ในส่วนของราคาถ้าเป็นกางเกงสแล็ค 300 บาทค่ะ"
-        return price
+        return "ในส่วนของราคาถ้าเป็นกางเกงสแล็ค 300 บาทค่ะ"
     else:
         return "ไม่เข้าใจเกี่ยวกับคำถาม เราจะปรับปรุงเกี่ยวกับการตอบคำถามให้ดีขึ้นในภายหลังนะค่ะ กราบขออภัย(ok)"
     return
